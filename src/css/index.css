@@ -177,6 +177,16 @@ code {
     line-height: 1.5em;
 }
 
+.articleWeek p.text {
+    box-sizing: border-box;
+    text-align: left;
+    font-family: 'encode_sansregular';
+    float: none;
+    width: 100%;
+    margin: 0;
+    line-height: 1.5em;
+}
+
 .article p.route {
     box-sizing: border-box;
     font-size: 0.75em;
@@ -221,4 +231,9 @@ a.report {
     font-family: 'encode_sansregular';
     padding: 1em 0;
     margin: 1em 0;
+}
+
+pre {
+    font-family: 'encode_sansregular';
+    font-size:  0.9em;
 }

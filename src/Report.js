@@ -1,6 +1,7 @@
 import React from 'react';
 /*import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';*/
 import { Link, Redirect } from 'react-router-dom';
+import Text1 from ".\\Text1.js";
 /*import ReactDOM from "react-dom";*/
 
 const url = 'https://github.com/annd16/jsramverk-me-app';
@@ -21,7 +22,8 @@ const display = 'me-app on GitHub';
         return "";
  };*/
 
-const week1 = "Link to my GitHub repo for this me-app:";
+
+const week1 = Text1;
 const week2 = "This is where the report for week2 will end up.";
 const week3 = "This is where the report for week3 will end up.";
 
@@ -54,12 +56,13 @@ class Week extends React.Component {
                     <span className='title'>Week </span>
                     <span>{this.props.value}</span>
 
-                    {/* Display what's in the kmom variable */}
-                    <p>{kmoms[(this.props.value)-1]}</p>
-
-                    <a className='report' href={url} target='_blank' rel='noopener noreferrer'>{display}</a>
-
                     <div>this.props.value: {this.props.value}</div>
+
+                    <p><a className='report' href={url} target='_blank' rel='noopener noreferrer'>{display}</a></p>
+
+                    {/* Display what's in the kmom variable */}
+                    <p className="text"><pre>{kmoms[(this.props.value)-1]}</pre></p>
+
                 </div>
             );
         } else {
