@@ -1,0 +1,224 @@
+@font-face {
+    font-family: 'vanillaregular';
+    src: url('fonts/vanilla-webfont.woff2') format('woff2'),
+         url('fonts/vanilla-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'encode_sansregular';
+    src: url('fonts/encodesans-regular-webfont.woff2') format('woff2'),
+         url('fonts/encodesans-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+img {
+    width: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "vanillaregular", "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.wrap-all {
+    width: 100%;
+}
+
+.outer-wrap {
+    box-sizing: border-box;
+    border: 1px solid rgb(190, 170, 220);
+    width: 100%;
+    margin: auto;
+}
+
+.inner-wrap {
+    box-sizing: border-box;
+    border: 1px solid rgb(175, 175, 175);
+    width: 90%;
+    margin: auto 5%;
+}
+
+.innerwrap-article {
+    width: 85%;
+    margin: auto 7.5%;
+}
+
+.inner-wrap-header, .inner-wrap-footer {
+    max-width: 1400px;
+    width: 100%;
+    margin: auto;
+}
+
+.frame {
+    box-sizing: border-box;
+    border: 2px solid lightgrey;
+    border-radius: 5px;
+}
+
+.header {
+    background-color: rgb(175, 175, 175);
+    padding: 0.5% 2%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header p {
+    color: rgb(240, 90, 20);
+}
+
+.nav {
+    box-sizing: border-box;
+    background-color: rgb(225, 225, 225);
+    padding: 0;
+}
+
+.nav ul {
+    min-height: 32.72px;
+}
+
+.nav-item {
+    box-sizing: border-box;
+    background-color: lightgreen;
+    display: inline-flex;
+    padding: 1% 2%;
+    margin: 0 1px;
+}
+
+.nav-item a {
+    box-sizing: border-box;
+    padding: 2% 2%;
+}
+
+.nav-item a.active {
+    background-color: rgb(190, 170, 220);
+    padding: 2% 2%;
+}
+
+.main {
+    display: flex;
+    min-height: 374px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: rgb(175, 175, 175);
+}
+
+.footer-item {
+    display: inline-flex;
+    margin: auto;
+    padding: 1% 2%;
+}
+
+.outer-wrap-sidebar {
+    float: left;
+    width: 20%;
+}
+
+.outer-wrap-sidebar .me {
+    visibility: hidden;
+    float: left;
+    width: 20%;
+}
+
+.sidebar {
+    box-sizing: border-box;
+    border: 1px solid rgb(175, 175, 175);
+    flex: 0 1 20%;
+    margin: 0;
+    padding: 2% 4%;
+}
+
+.sidebar-left {
+    float: left;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-inline-start: 10%;
+}
+
+.sidenav-item {
+    padding: 0.25em 0;
+}
+
+.outer-wrap-article {
+    flex: 5 1 80%;
+}
+
+.article {
+    min-height: 250px;
+    padding: 1% 5%;
+    overflow: auto;
+}
+
+.article p.text {
+    box-sizing: border-box;
+    text-align: justify;
+    font-family: 'encode_sansregular';
+    float: right;
+    width: 45%;
+    margin: 0 2.5%;
+    line-height: 1.5em;
+}
+
+.article p.route {
+    box-sizing: border-box;
+    font-size: 0.75em;
+    margin: -2.5em 2.5% 0 2.5%;
+    float: right;
+}
+
+.articleWeek div {
+    font-size: 0.9em;
+    margin: 2em 0;
+}
+
+.img-wrap {
+    box-sizing: border-box;
+    border: 2px solid rgb(190, 170, 220);
+    width: 45%;
+    float: left;
+}
+figure {
+    margin: 1em 10%;
+}
+
+figcaption {
+    font-size: 0.75em;
+    font-weight: lighter;
+}
+
+img.me {
+    box-sizing: border-box;
+    border: 2px solid rgb(190, 170, 220);
+}
+
+p.sign {
+    -ms-transform: rotate(-20deg); /* IE 9 */
+  -webkit-transform: rotate(-20deg); /* Safari prior 9.0 */
+  transform: rotate(-20deg); /* Standard syntax */
+  float: right;
+  font-size: 1.5em;
+}
+
+a.report {
+    font-family: 'encode_sansregular';
+    padding: 1em 0;
+    margin: 1em 0;
+}
