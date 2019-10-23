@@ -1,30 +1,17 @@
 import React from 'react';
-/*import { BrowserRouter as Router, Link, Route, Redirect } from 'react-router-dom';*/
-import { Link, Redirect } from 'react-router-dom';
+
+import { Redirect } from 'react-router-dom';
 import Text1 from ".\\Text1.js";
-/*import ReactDOM from "react-dom";*/
+import Text2 from ".\\Text2.js";
+
+import Sidebar from './Components/Sidebar.js'
+
 
 const url = 'https://github.com/annd16/jsramverk-me-app';
 const display = 'me-app on GitHub';
 
-/*const externalLink = ({url, display}) => {
-  return (
-      "<a href=" + url + " target='_blank' rel='noopener noreferrer'>" + display + "</a>"
-  );
-};*/
-
-/*function externalLink(url, display) {
-    if (url && display) {
-        return (
-          "<a href=" + url + " target='_blank' rel='noopener noreferrer'>" + display + "</a>"
-        );
-    } else
-        return "";
- };*/
-
-
 const week1 = Text1;
-const week2 = "This is where the report for week2 will end up.";
+const week2 = Text2;
 const week3 = "This is where the report for week3 will end up.";
 
 let kmoms = [
@@ -34,10 +21,10 @@ let kmoms = [
                 ]
 
 const sidenav = [
-    ["/report/week/1", "Week1"],
-    ["/report/week/2", "Week2"],
-    ["/report/week/3", "Week3"],
-]
+                    ["/report/week/1", "Week1"],
+                    ["/report/week/2", "Week2"],
+                    ["/report/week/3", "Week3"],
+                ]
 
 
 class Week extends React.Component {
@@ -58,10 +45,10 @@ class Week extends React.Component {
 
                     <div>this.props.value: {this.props.value}</div>
 
-                    <p><a className='report' href={url} target='_blank' rel='noopener noreferrer'>{display}</a></p>
+                    <span className='link'><a className='report' href={url} target='_blank' rel='noopener noreferrer'>{display}</a></span>
 
                     {/* Display what's in the kmom variable */}
-                    <p className="text"><pre>{kmoms[(this.props.value)-1]}</pre></p>
+                    <div className="text"><pre>{kmoms[(this.props.value)-1]}</pre></div>
 
                 </div>
             );
@@ -73,29 +60,10 @@ class Week extends React.Component {
         }
 }
 
-
-class Sidebar extends React.Component {
-    render() {
-        return (
-            <div className="sidebar sidebar-left">
-            <ul>
-                {sidenav.map(function(item, i) {
-                    const navbarItem =
-                    <li className="sidenav-item" key={i}>
-                        <Link to={item[0]}>{item[1]}</Link>
-                    </li>;
-                    return navbarItem;
-                })}
-            </ul>
-            </div>
-        )
-    }
-}
-
 const Report = ({match}) => {
     return (
-        <main className="main">
-            <Sidebar/>
+        <main className="main report">
+            <Sidebar sidenav={sidenav}/>
             <div className="outer-wrap outer-wrap-article">
                 <div className="inner-wrap inner-wrap-article">
                     <article className="article" id="articleReport">

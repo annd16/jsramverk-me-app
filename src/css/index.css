@@ -1,7 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/** {
+border: 1px solid #f00 !important;
+}*/
+
 @font-face {
     font-family: 'vanillaregular';
     src: url('fonts/vanilla-webfont.woff2') format('woff2'),
-         url('fonts/vanilla-webfont.woff') format('woff');
+    url('fonts/vanilla-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -9,27 +19,34 @@
 @font-face {
     font-family: 'encode_sansregular';
     src: url('fonts/encodesans-regular-webfont.woff2') format('woff2'),
-         url('fonts/encodesans-regular-webfont.woff') format('woff');
+    url('fonts/encodesans-regular-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
 }
+
+/*********************************/
+/**  VERY VERY SMALL SCREENS    **/
+/**     width < 300px          **/
+/*********************************/
 
 img {
     width: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "vanillaregular", "Segoe UI", "Roboto", "Oxygen",
+    font-family: -apple-system, BlinkMacSystemFont, "vanillaregular", "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 0.8em;
+    max-width: 1000px;
+    overflow-x: hidden;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -47,13 +64,20 @@ code {
 .inner-wrap {
     box-sizing: border-box;
     border: 1px solid rgb(175, 175, 175);
-    width: 90%;
-    margin: auto 5%;
+    width: 100%;
 }
 
-.innerwrap-article {
-    width: 85%;
-    margin: auto 7.5%;
+p {
+    font-size: 0.9em;
+}
+
+
+.outer-wrap-article {
+    width: 100;;
+}
+
+.inner-wrap-article {
+    width: 100%;
 }
 
 .inner-wrap-header, .inner-wrap-footer {
@@ -75,6 +99,10 @@ code {
     text-align: center;
 }
 
+.header h1 {
+    font-size: 1.2em;
+}
+
 .header p {
     color: rgb(240, 90, 20);
 }
@@ -91,10 +119,31 @@ code {
 
 .nav-item {
     box-sizing: border-box;
+    border: 1px solid springgreen;
     background-color: lightgreen;
     display: inline-flex;
     padding: 1% 2%;
     margin: 0 1px;
+}
+
+/* unvisited link */
+a:link {
+    color: rgb(255, 230, 0);
+}
+
+/* visited link */
+a:visited {
+    color: rgb(70, 20, 190);
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
 }
 
 .nav-item a {
@@ -103,13 +152,14 @@ code {
 }
 
 .nav-item a.active {
-    background-color: rgb(190, 170, 220);
+    background-color: rgb(0, 255, 255);
     padding: 2% 2%;
 }
 
 .main {
-    display: flex;
+    display: block;
     min-height: 374px;
+    margin-right: 2.5%;
 }
 
 .footer {
@@ -117,6 +167,7 @@ code {
     justify-content: center;
     width: 100%;
     background-color: rgb(175, 175, 175);
+    font-size: 0.85em;
 }
 
 .footer-item {
@@ -139,13 +190,17 @@ code {
 .sidebar {
     box-sizing: border-box;
     border: 1px solid rgb(175, 175, 175);
-    flex: 0 1 20%;
+    flex: 0 1 15%;
     margin: 0;
     padding: 2% 4%;
 }
 
 .sidebar-left {
-    float: left;
+    display: none;
+}
+
+.reports .sidebar-left {
+    display: flex;
 }
 
 .sidebar ul {
@@ -157,24 +212,36 @@ code {
     padding: 0.25em 0;
 }
 
-.outer-wrap-article {
-    flex: 5 1 80%;
-}
-
 .article {
     min-height: 250px;
-    padding: 1% 5%;
+    padding: 1% 2.5%;
     overflow: auto;
+    overflow: visible;  /* Must be visible for tooltip not to be cropped */
+    width: 100%;
+}
+
+.report .article {
+    overflow: scroll;
 }
 
 .article p.text {
     box-sizing: border-box;
+    position: relative;
     text-align: justify;
     font-family: 'encode_sansregular';
-    float: right;
-    width: 45%;
-    margin: 0 2.5%;
-    line-height: 1.5em;
+    font-size: 1em;
+    line-height: 1.2em;
+    padding: 1em 0.5em;
+}
+
+.article p.description {
+    box-sizing: border-box;
+    position: relative;
+    text-align: justify;
+    font-family: 'encode_sansregular';
+    font-size: 1em;
+    line-height: 1.2em;
+    padding: 1em 0.5em;
 }
 
 .articleWeek p.text {
@@ -188,10 +255,11 @@ code {
 }
 
 .article p.route {
+    display: none;
     box-sizing: border-box;
     font-size: 0.75em;
     margin: -2.5em 2.5% 0 2.5%;
-    float: right;
+    /*float: right;*/
 }
 
 .articleWeek div {
@@ -201,9 +269,8 @@ code {
 
 .img-wrap {
     box-sizing: border-box;
-    border: 2px solid rgb(190, 170, 220);
-    width: 45%;
-    float: left;
+    border: 1px solid darkorchid;
+    background-color: rgb(190, 170, 220);
 }
 figure {
     margin: 1em 10%;
@@ -220,11 +287,10 @@ img.me {
 }
 
 p.sign {
-    -ms-transform: rotate(-20deg); /* IE 9 */
-  -webkit-transform: rotate(-20deg); /* Safari prior 9.0 */
-  transform: rotate(-20deg); /* Standard syntax */
-  float: right;
-  font-size: 1.5em;
+    -ms-transform: rotate(0deg); /* IE 9 */
+    -webkit-transform: rotate(0deg); /* Safari prior 9.0 */
+    transform: rotate(0deg); /* Standard syntax */
+    font-size: 1em;
 }
 
 a.report {
@@ -233,7 +299,1058 @@ a.report {
     margin: 1em 0;
 }
 
+.articleWeek .link {
+    margin-bottom: 12em;
+}
+
+.description {
+    margin: 1em 2em;
+}
+
 pre {
     font-family: 'encode_sansregular';
     font-size:  0.9em;
+}
+
+/* Forms */
+
+label {
+    display: block;
+}
+
+.form {
+    background-color: lightgrey;
+    padding: 0.5em;
+    max-width: 450px;
+}
+
+.form-input {
+    display: block;
+    width: 90%;
+    padding: 0.4rem 0.1rem;
+    margin-bottom: 0.5em;
+}
+
+.form-input:valid+span:after {
+    position: relative;
+    content: '\2714';
+    color: green;
+}
+
+.form-input:invalid+span:after {
+    /*position: absolute;*/
+    position: relative;
+    content: 'X';
+    color: red;
+}
+
+
+input[type=checkbox]:valid+div.gdpr-text+span:after {
+    position: relative;
+    content: '\2714';
+    color: green;
+}
+
+input[type=checkbox]:invalid+div.gdpr-text+span:after {
+    position: relative;
+    content: 'X';
+    color: red;
+}
+
+.eye {
+    position: relative;
+}
+
+span:after {
+    position: absolute;
+    top: -1.8rem;
+    /*left: 13rem;
+    display: inline;*/
+    float: right;
+}
+
+span.gdpr:after {
+    position: absolute;
+    top: 0;
+    float: right;
+}
+
+.fa {
+    position: absolute;
+    top: -3.3rem;
+    left: 6.1rem;
+    display: inline;
+}
+
+
+input[type=checkbox] {
+    /* 50% larger checkboxes */
+    -ms-transform: scale(1.5); /* IE */
+    -moz-transform: scale(1.5); /* FF */
+    -webkit-transform: scale(1.5); /* Safari and Chrome */
+    -o-transform: scale(1.5); /* Opera */
+    transform: scale(1.5);
+    float: left;
+    flex: 1 1 10%;
+    margin: 1em 5%;
+}
+
+input[type=submit] {
+    display: block;
+    width: 50%;
+    margin: 0 25%;
+    clear: left;
+}
+
+.form-input.split {
+    display: inline-block;
+    width: 2rem;
+}
+
+.form-input.split.year {
+    width: 3rem;
+}
+
+div.gdpr {
+    display: flex;
+}
+
+span.gdpr {
+    display: inline;
+    font-size: 10px;
+    align-self: center;
+    vertical-align: center;
+}
+
+.gdpr-text {
+    display: inline;
+    font-size: 0.75em;
+    flex: 1 1 90%;
+    align-self: center;
+}
+
+
+
+/* DatePicker */
+
+.datepicker {
+    margin-bottom: 1.5em;
+}
+
+/* Calendar */
+
+.calendar {
+    border: 2px solid blue;
+    background-color: navajowhite;
+}
+
+.calendar-ctrl {
+    background-color: rgb(0, 100, 255);
+}
+
+.calendar-body {
+    border-top: 1px solid blue;
+    background-color: rgb(0, 200, 255);
+    min-height: 110px;
+}
+
+h3.year, h3.month {
+    display: inline-block;
+}
+
+thead, tbody {
+    width: 10%;
+}
+
+.thead, .tbody {
+    /*width: 10%;*/
+}
+
+.tr {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: 0.5em;
+    /*margin: 0 auto;
+    padding: 0;*/
+}
+
+th, td {
+    box-sizing: border-box;
+    width: 5%;
+    text-align: center;
+    padding: 1%;
+}
+
+.th, .td {
+    box-sizing: border-box;
+    display: flex;
+    /*width: 5%;*/
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 1%;
+    font-size: calc(12px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+}
+
+/* Display the one-letter abbreviation as the name of the weekday */
+/*@media all and (max-width: 800px) {*/
+.tr {
+    grid-gap: .25em;
+}
+
+.tr .th {
+    font-size: 0;
+}
+
+.tr > .th abbr:after, .tr > .td abbr:after {
+    content: attr(title);
+    font-size: calc(14px + (26 - 16) * ((100vw - 300px) / (1600 - 300)));
+    text-align: center;
+}
+/*}*/
+
+.day {
+    color: black;
+}
+
+.day.different {
+    color: lightgrey;
+    font-weight: lighter;
+}
+
+.Sun {
+    color: red;
+}
+
+.weeknumber {
+    font-size: 0.60em;
+    font-weight: lighter;
+}
+
+.today {
+    border: 2px solid green;
+    border-radius: 50%;
+}
+.selected {
+    border-radius: 10%;
+    background-color: rgb(255, 255, 0);
+}
+
+.link {
+    padding: 0.25rem;
+}
+
+a.link {
+    font-weight: bolder;
+    color: red;
+}
+
+a.link:visited {
+    color: darkgrey;
+}
+
+button.exit {
+    color: red;
+    font-weight: bolder;
+    float: right;
+}
+
+/* Tooltip */
+
+.tooltip, .tooltip.pw {
+    position: relative;
+    display: inline-block;
+    /*border-bottom: 1px dotted black;*/
+}
+
+.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    font-family: monospace;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100;
+    top: -4rem;
+    left: 5rem;
+}
+
+.tooltip.pw .tooltip-text {
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 100;
+    top: -3.5em;
+    left: 0;
+}
+
+.tooltip:hover .tooltip-text, .tooltip.pw:hover .tooltip-text.pw {
+    visibility: visible;
+}
+
+/* For mobile browsers */
+.tooltip:active .tooltip-text, .tooltip.pw:active .tooltip-text.pw {
+    visibility: visible;
+}
+
+/* Pop-up */
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+
+.info {
+    font-size: 8px;
+}
+
+/* Timer */
+.timer-wrap {
+    border: 5px ridge lightgrey;
+    /*padding: 0.5em 1em;*/
+    width: 100%;
+}
+
+
+.timer {
+    padding: 0.5em 1em;
+}
+
+div.timer {
+    width: 80%;
+    margin: 10%;
+}
+
+
+/*****************************/
+/**  VERY SMALL SCREENS     **/
+/** 300px < width < 400px  **/
+/*****************************/
+
+@media screen and (min-width: 300px) {
+    body {
+        font-size: 0.9em;
+    }
+
+    figure {
+        width: 70%;
+        margin: 1em 15%;
+    }
+
+    .article p.text {
+        font-size: 1em;
+    }
+
+    .fa {
+        position: absolute;
+        top: -3.3rem;
+        left: 6.5rem;
+        display: inline;
+    }
+}
+
+/******************************/
+/**         SMALL screens    **/
+/**   400px < width < 600px  **/
+/******************************/
+
+@media screen and (min-width: 400px) {
+    body {
+        font-size: 0.95em;
+    }
+
+    .me .article {
+        display: flex;
+        min-height: 200px;
+    }
+
+    .article p.route {
+        display: block;
+        position: absolute;
+    }
+
+    .img-wrap {
+        float: none;
+        display: flex;
+        width: 200%;
+        margin: 0;
+    }
+
+    figure {
+        align-self: center;
+    }
+
+    .text-wrap {
+        display: flex;
+    }
+
+    .article p.text {
+        align-self: center;
+        padding: 0 1.5em;
+    }
+
+    .main {
+        display: flex;
+        min-height: 345px;
+    }
+
+    .calendar {
+        width: 85%;
+    }
+
+    /* Displaying the name of the weekdays */
+    .tr {
+        grid-gap: .25em;
+    }
+
+    .tr .th {
+        font-size: 1em;
+    }
+
+    .tr > .th abbr:after, .tr > .td abbr:after {
+        display: none;
+        font-size: calc(12px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+        text-align: center;
+    }
+
+    .fa {
+        position: absolute;
+        top: -3.5rem;
+        left: 7rem;
+        display: inline;
+    }
+}
+
+/*********************/
+/**  MEDIUM screens  **/
+/**                 **/
+/*********************/
+
+@media screen and (min-width: 600px) {
+
+    img {
+        width: 100%;
+    }
+
+    /*body {
+    font-size: 1.1em;
+    }*/
+
+    code {
+        font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+    }
+
+    .wrap-all {
+        width: 100%;
+    }
+
+    .outer-wrap {
+        box-sizing: border-box;
+        border: 1px solid rgb(190, 170, 220);
+        width: 100%;
+        margin: auto;
+    }
+
+    .inner-wrap {
+        box-sizing: border-box;
+        border: 1px solid rgb(175, 175, 175);
+    }
+
+
+    .innerwrap-article {
+        width: 85%;
+        margin: auto 7.5%;
+    }
+
+    .inner-wrap-header, .inner-wrap-footer {
+        max-width: 1400px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .frame {
+        box-sizing: border-box;
+        border: 2px solid lightgrey;
+        border-radius: 5px;
+    }
+
+    .header {
+        background-color: rgb(175, 175, 175);
+        padding: 0.5% 2%;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .header p {
+        color: rgb(240, 90, 20);
+    }
+
+    .nav {
+        box-sizing: border-box;
+        background-color: rgb(225, 225, 225);
+        padding: 0;
+    }
+
+    .nav ul {
+        min-height: 32.72px;
+    }
+
+    .nav-item {
+        display: inline-flex;
+        padding: 1% 2%;
+        margin: 0 1px;
+    }
+
+    /* unvisited link */
+    a:link {
+        color: red;
+    }
+
+    /* visited link */
+    a:visited {
+        color: rgb(255, 230, 0);
+    }
+
+    /* mouse over link */
+    a:hover {
+        color: hotpink;
+    }
+
+    /* selected link */
+    a:active {
+        color: blue;
+    }
+
+    .nav-item a {
+        box-sizing: border-box;
+        padding: 2% 2%;
+    }
+
+    .main {
+        margin: 0;
+    }
+
+    .me .main {
+        display: block;
+        min-height: 374px;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        background-color: rgb(175, 175, 175);
+    }
+
+    .footer-item {
+        display: inline-flex;
+        margin: auto;
+        padding: 1% 2%;
+    }
+
+    .outer-wrap-sidebar {
+        float: left;
+        width: 20%;
+    }
+
+    .outer-wrap-sidebar .me {
+        visibility: hidden;
+        float: left;
+        width: 20%;
+    }
+
+    .sidebar {
+        box-sizing: border-box;
+        border: 1px solid rgb(175, 175, 175);
+        flex: 0 1 15%;
+        margin: 0;
+        padding: 2% 4%;
+    }
+
+    .sidebar-left {
+        float: left;
+    }
+
+    .sidebar ul {
+        list-style-type: none;
+        padding-inline-start: 10%;
+    }
+
+    .sidenav-item {
+        padding: 0.25em 0;
+    }
+
+    .outer-wrap-article {
+        display: flex;
+    }
+
+    .article {
+        min-height: 250px;
+        padding: 1% 5%;
+        overflow: auto;
+        overflow: visible;  /* Must be visible for tooltip not to be cropped */
+    }
+
+    .article h2 {
+        margin: 0 1em 1.4em 1em;
+    }
+
+    .article p.text {
+        line-height: 1.5em;
+        padding: 2rem 10%;
+    }
+
+    .articleWeek p.text {
+        box-sizing: border-box;
+        text-align: left;
+        font-family: 'encode_sansregular';
+        float: none;
+        width: 100%;
+        margin: 0;
+        line-height: 1.5em;
+    }
+
+    .article p.route {
+        box-sizing: border-box;
+        font-size: 0.75em;
+        margin: -2.5em 2.5% 0 2.5%;
+        float: right;
+    }
+
+    .articleWeek div {
+        font-size: 0.9em;
+        margin: 2em 0;
+    }
+
+    .me .article {
+        display: inline;
+        min-height: 200px;
+    }
+
+    .img-wrap {
+        width: 45%;
+        float: left;
+    }
+
+    figure {
+        width: 90%;
+        margin: 1em 5%;
+    }
+
+    figcaption {
+        text-align: center;
+    }
+
+    img.me {
+        box-sizing: border-box;
+        border: 2px solid rgb(190, 170, 220);
+    }
+
+    .text-wrap {
+        flex-direction: column;
+    }
+
+    p.sign {
+        -ms-transform: rotate(-20deg); /* IE 9 */
+        -webkit-transform: rotate(-20deg); /* Safari prior 9.0 */
+        transform: rotate(-20deg); /* Standard syntax */
+        float: right;
+        font-size: 1.5em;
+    }
+
+    a.report {
+        font-family: 'encode_sansregular';
+        padding: 1em 0;
+        margin: 1em 0;
+    }
+
+    .articleWeek .link {
+        margin-bottom: 12em;
+    }
+
+    .description {
+        margin: 1em 2em;
+    }
+
+    pre {
+        font-family: 'encode_sansregular';
+        font-size:  0.9em;
+    }
+
+    /* Forms */
+
+    label {
+        display: block;
+    }
+
+    .form {
+        background-color: lightgrey;
+        padding: 0.5em;
+    }
+
+    .form-input {
+        padding: 0.4rem 0.1rem;
+        margin-bottom: 0.2rem;
+        display: block;
+    }
+
+    .form-input:valid+span:after {
+        position: relative;
+        content: '\2714';
+        color: green;
+    }
+
+    .form-input:invalid+span:after {
+        /*position: absolute;*/
+        position: relative;
+        content: 'X';
+        color: red;
+    }
+
+    .eye {
+        position: relative;
+    }
+
+    /*span:after {
+    position: absolute;
+    top: -2rem;
+    left: 13rem;
+    display: inline;
+    }*/
+
+    /*span.gdpr:after {
+    position: absolute;
+    top: -1.35rem;
+    left: 13rem;
+    display: inline;
+    }*/
+
+    .fa {
+        position: absolute;
+        top: -2rem;
+        left: 11.5rem;
+        display: inline;
+    }
+
+
+    input[type=checkbox] {
+        /* 50% larger checkboxes */
+        -ms-transform: scale(1.5); /* IE */
+        -moz-transform: scale(1.5); /* FF */
+        -webkit-transform: scale(1.5); /* Safari and Chrome */
+        -o-transform: scale(1.5); /* Opera */
+        transform: scale(1.5);
+        padding: 10px;
+    }
+
+    input[type=submit] {
+        display: block;
+    }
+
+    .form-input.split {
+        display: inline-block;
+        width: 2rem;
+    }
+
+    .form-input.split.year {
+        width: 3rem;
+    }
+
+
+    /* DatePicker */
+
+    .datepicker {
+        margin-bottom: 1.5em;
+    }
+
+    /* Calendar */
+
+    .calendar {
+        border: 2px solid blue;
+        background-color: navajowhite;
+    }
+
+    .calendar-ctrl {
+        background-color: rgb(0, 100, 255);
+    }
+
+    .calendar-body {
+        border-top: 1px solid blue;
+        background-color: rgb(0, 200, 255);
+        min-height: 160px;
+    }
+
+    h3.year, h3.month {
+        display: inline-block;
+    }
+
+    thead, tbody {
+        width: 10%;
+    }
+
+    .thead, .tbody {
+        /*width: 10%;*/
+    }
+
+    .tr {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-gap: 0.5em;
+        /*margin: 0 auto;
+        padding: 0;*/
+    }
+
+    th, td {
+        box-sizing: border-box;
+        width: 5%;
+        text-align: center;
+        padding: 1%;
+    }
+
+    .th, .td {
+        box-sizing: border-box;
+        display: flex;
+        /*width: 5%;*/
+        align-items: center;
+        justify-content: center;
+        list-style: none;
+        padding: 1%;
+        font-size: calc(12px + (21 - 16) * ((100vw - 300px) / (1600 - 300)));
+    }
+
+
+    .day {
+        color: black;
+    }
+
+    .day.different {
+        color: lightgrey;
+        font-weight: lighter;
+    }
+
+    .Sun {
+        color: red;
+    }
+
+    .weeknumber {
+        font-size: 0.60em;
+        font-weight: lighter;
+    }
+
+    .today {
+        border: 1px solid green;
+        border-radius: 50%;
+    }
+    .selected {
+        border-radius: 10%;
+        background-color: rgb(255, 255, 0);
+    }
+
+    .link {
+        padding: 0.25rem;
+    }
+
+    a.link {
+        font-weight: bolder;
+        color: red;
+    }
+
+    a.link:visited {
+        color: darkgrey;
+    }
+
+    button.exit {
+        color: red;
+        font-weight: bolder;
+        float: right;
+    }
+
+    /* Tooltip */
+
+    .tooltip, .tooltip.pw {
+        position: relative;
+        display: inline-block;
+        /*border-bottom: 1px dotted black;*/
+    }
+
+    /*.tooltip .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    font-family: monospace;
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    /*position: absolute;
+    z-index: 100;
+    top: -5px;
+    left: -11rem;
+}
+
+.tooltip.pw .tooltip-text {
+/* Position the tooltip */
+/*position: absolute;
+z-index: 100;
+top: 1.75em;
+left: -10rem;
+}*/
+
+/*.tooltip:hover .tooltip-text, .tooltip.pw:hover .tooltip-text.pw {
+visibility: visible;
+}*/
+
+/* Pop-up */
+
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+/* Timer */
+.timer-wrap {
+    border: 5px ridge lightgrey;
+    /*padding: 0.5em 1em;*/
+    width: 100%;
+}
+
+
+.timer {
+    padding: 0.5em 1em;
+}
+
+div.timer {
+    width: 80%;
+    margin: 10%;
+}
+}
+
+
+/********************************/
+/**     LARGE screens          **/
+/**         width  > 800px    **/
+/********************************/
+
+@media screen and (min-width: 800px) {
+    .article p.text {
+        margin: 4rem 2.5%;
+    }
 }

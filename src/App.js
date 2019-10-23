@@ -3,7 +3,7 @@ import React from 'react';
 a collection of navigational components.*/
 /*import { BrowserRouter as Router, Link, Route} from 'react-router-dom';*/
 import { BrowserRouter as Router} from 'react-router-dom';
-import logo from './css/logo.svg';
+/*import logo from './css/logo.svg';*/
 import './css/App.css';
 import './css/index.css';
 
@@ -19,7 +19,7 @@ class App extends React.Component {
         console.log(this.props);            /* An empty object! */
         return (
             <Router>
-             {"history.location.pathname in <Router> in App.js = " + history.location.pathname /* Displays the route! */}
+             <p>{"history.location.pathname in <Router> in App.js = " + history.location.pathname /* Displays the route! */}</p>
                 <Layout location={this.props.location} params={this.props.params}/>
                 {/*{"\nthis.props.location in <Router> in App= " + this.props.location}*/}
                 {console.log("this.props inside Router in App.js= " )}
