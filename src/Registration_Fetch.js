@@ -1,10 +1,8 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import Sidebar from './Components/Sidebar.js'
 import Form_register from './Form/Form_register.js';
 
-import ShowLocationAndHistory from './Components/ShowLocationAndHistory.js';
 
 const sidenav = [
     ["", ""],
@@ -23,37 +21,7 @@ class Registration extends React.Component {
         this.handleClick = this.handleClick.bind(this);
         this.handleMouseUp = this.handleMouseUp.bind(this);
         this.getTimeoutsAndTimersFromCalendarCtrl = this.getTimeoutsAndTimersFromCalendarCtrl.bind(this);
-        this.updateRegistrationFormData = this.updateRegistrationFormData.bind(this);
-    }
 
-    componentDidMount() {
-        console.log("%ccomponentDidMount() - Registration!!", "color: gray; font-size: large");
-        console.log("this.state = ");
-        console.log(this.state);
-        console.log("this.props = ");
-        console.log(this.props);
-        console.log("this.props.location = ");
-        console.log(this.props.location);
-
-        this.props.updateLayoutWithLocations(this.props.location);
-
-    }
-
-    componentDidUpdate(prevProps) {
-            console.log("%ccomponentDidUpdate() - Registration!!", "color: gray; font-size: large");
-            console.log("this.state = ");
-            console.log(this.state);
-            console.log("this.props = ");
-            console.log(this.props);
-
-            // prevProps is the props BEFORE update
-            if (prevProps.location.pathname !== this.props.location.pathname) {
-                console.log("Location has been changed in Registration componentDidUpdate()");
-            }
-
-            if (prevProps.prevLocation.pathname !== this.props.prevLocation.pathname) {
-                console.log("prevLocation has been changed in Registration componentDidUpdate()");
-            }
     }
 
     /* This click handler is necessary to prevent the datepicker from closing when clicking outside form date input */
@@ -93,17 +61,6 @@ class Registration extends React.Component {
         });
     }
 
-
-    updateRegistrationFormData(isSubmitted) {
-        console.log("Inside updateRegistrationFormData()!!");
-        console.log("%cisSubitted = ", "color: gray; font-size: x-large");
-        console.log(isSubmitted);
-
-        this.setState({
-            formIsSubmitted: isSubmitted
-        });
-    }
-
     mainClass = "main " + this.props.location.pathname.slice(1);
     render() {
         console.log("this.props inside registration render = ");
@@ -115,13 +72,12 @@ class Registration extends React.Component {
             <main className={this.mainClass} onMouseUp={this.handleMouseUp}>
                 <Sidebar sidenav={sidenav}/>
                 <div className="outer-wrap outer-wrap-article">
-                    <ShowLocationAndHistory/>
                     <div className="inner-wrap inner-wrap-article">
                         <article className="article" onClick={this.handleClick}>
                             <h2>Registration</h2>
                             {/*<p className="route">( this.props.location.pathname:  { this.props.location.pathname } )</p>*/}
                             <p className='description'>{ description }</p>
-                            <Form_register getTandT={this.getTimeoutsAndTimersFromCalendarCtrl} timerIsOn={this.state.timerIsOn} intervalIsOn={this.state.intervalIsOn} history={this.props.history} location={this.props.location} goBack={this.props.goBack -1} location={this.props.location} prevLocation={this.props.prevLocation} updateRegistrationFormData={this.updateRegistrationFormData}/>
+                            <Form_register getTandT={this.getTimeoutsAndTimersFromCalendarCtrl} timerIsOn={this.state.timerIsOn} intervalIsOn={this.state.intervalIsOn}/>
                         </article>
                     </div>
                 </div>
@@ -130,4 +86,4 @@ class Registration extends React.Component {
     };
 }
 
-export default withRouter(Registration);
+export default Registration;

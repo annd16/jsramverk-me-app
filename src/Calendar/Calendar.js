@@ -11,6 +11,8 @@ import Sidebar from '../Components/Sidebar.js'
 
 import PropTypes from 'prop-types';
 
+import ShowLocationAndHistory from '../Components/ShowLocationAndHistory.js';
+
 const sidenav = [
     ["", ""],
 ]
@@ -45,13 +47,26 @@ class Calendar extends React.Component {
         /*state = {
         ...this.resolveStateFromProp()
     };*/
+    // this.state = {
+    //     ...this.resolveStateFromProps(),
+    //     data: "Bertil",
+    //     year: "",
+    //     month: "",
+    //     day: "",
+    //     date: new Date()
+    // }
+
     this.state = {
-        ...this.resolveStateFromProps(),
-        data: "Bertil",
-        year: "",
-        month: "",
-        day: "",
-        date: new Date()
+        // ...this.resolveStateFromProp(),
+        data: "Calendar",
+        date: new Date(),
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+        day: new Date().getDate(),
+        // noOfDaysInMonth: 0,
+        // selectedDate: null,
+        // beginObj: null,
+        // endObj: null
     }
 
     this.handleClickDate = this.handleClickDate.bind(this);
@@ -106,6 +121,8 @@ componentDidMount() {
     });
     console.log("this.state = ");
     console.log(this.state);
+
+    this.props.updateLayoutWithLocations(this.props.location);
 }
 
 getSnapshotBeforeUpdate(prevProps, prevState) {
@@ -278,6 +295,7 @@ render() {
         <main className="main" onMouseUp={this.handleMouseUp}>
         <Sidebar sidenav={sidenav} optionalComp=<Timer/>/>
         <div className="outer-wrap outer-wrap-article">
+        <ShowLocationAndHistory/>
         <div className="inner-wrap inner-wrap-article">
         <article className="article" onClick={this.handleClick}>
         <h2>Calendar</h2>
@@ -292,6 +310,8 @@ render() {
         <div className="tbody">{weeksInCalendarView(beginObj, endObj).map(function(item, i) {
             console.log("item = ");
             console.log(item);
+            console.log("i = ");
+            console.log(i);
             console.log("this2 = " + this);
             console.log("%cthat2 = ", "color: green");
             console.log(that);
@@ -299,6 +319,10 @@ render() {
             const year = item[i].getFullYear();
             const month2 = item[i].getMonth();
             const dayOfMonth = item[i].getDate();
+
+            // const year2 = item[i-1].getFullYear();
+            // const month3 = item[i-1].getMonth();
+            // const dayOfMonth2 = item[i-1].getDate();
 
             console.log("item[i].getFullYear() = ");
             console.log(item[i].getFullYear());

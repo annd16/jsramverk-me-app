@@ -17,7 +17,7 @@ const week3 = "This is where the report for week3 will end up.";
 let kmoms = [
                     week1,
                     week2,
-                    week3,
+                    week3
                 ]
 
 const sidenav = [

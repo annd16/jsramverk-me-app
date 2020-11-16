@@ -17,13 +17,19 @@ class App extends React.Component {
     render() {
         console.log("\nthis.props in App-render: ")
         console.log(this.props);            /* An empty object! */
+        console.log("\nthis in App-render: ")
+        console.log(this);            /* An empty object! */
         return (
             <Router>
              <p>{"history.location.pathname in <Router> in App.js = " + history.location.pathname /* Displays the route! */}</p>
-                <Layout location={this.props.location} params={this.props.params}/>
+              {/*}<p>{"\nthis.props.location in <Router> in App.js = " + this.props.location}</p> ==> undefined */}
+                {/*<Layout location={this.props.location} params={this.props.params}/>*/}
+                <Layout/>
                 {/*{"\nthis.props.location in <Router> in App= " + this.props.location}*/}
                 {console.log("this.props inside Router in App.js= " )}
                 {console.log(this.props) /* An empty object! */}
+                {console.log("this inside Router in App.js= " )}
+                {console.log(this) /* An empty object! */}
                 {/*{this.props.forEach(function(prop) {
                     console.log("\nthis.props property in App= " + prop)
                 })}*/}

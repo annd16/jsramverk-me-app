@@ -75,10 +75,10 @@ export function checkIfDateInValidRange(dateObj, maxAge, minAge=0) {
 
     console.log("%cdateObj.getTime(): ", "color: pink; font-size: x-large");
     console.log(dateObj.getTime());
-    console.log("%ctimeEarliest: ", "color: pink; font-size: x-large");
-    console.log(timeEarliest);
-    console.log("%ctimeLatest: ", "color: pink; font-size: x-large");
-    console.log(timeLatest);
+    // console.log("%ctimeEarliest: ", "color: pink; font-size: x-large");
+    // console.log(timeEarliest);
+    // console.log("%ctimeLatest: ", "color: pink; font-size: x-large");
+    // console.log(timeLatest);
 
 
     if(dateObj.getTime() > timeEarliest && dateObj.getTime() < timeLatest ) {
@@ -451,13 +451,15 @@ export const weeksInCalendarView = function(beginObj, endObj) {
 */
 export function checkIfTodaySetClass(dateObj, myClass)
 {
-    /*console.log("checkIfTodaySetClass()");
+    console.log("checkIfTodaySetClass()");
     console.log("dateObj.getDate() = " + dateObj.getDate());
     console.log("dateObj.getMonth() = " + dateObj.getMonth());
     console.log("dateObj.getFullYear() = " + dateObj.getFullYear());
+
+    // Global constants
     console.log("thisDay = " + thisDay);
     console.log("thisMonth = " + thisMonth);
-    console.log("thisYear = " + thisYear);*/
+    console.log("thisYear = " + thisYear);
 
     if ((dateObj.getDate() === thisDay) && (dateObj.getMonth() === thisMonth) && (dateObj.getFullYear() === thisYear) && (myClass !== 'different')) {
         myClass += ' today';
